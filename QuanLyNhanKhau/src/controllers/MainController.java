@@ -13,10 +13,11 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import views.BuoiHopManagerFrame.ViewBuoiHop;
 import views.HoKhauManagePanel;
 import views.HomePagePanel;
 import views.NhanKhauManagePanel;
-import views.PhanThuongManagerFrame.ViewBuoiHop;
 import views.ThongKePanel;
 import views.TimKiemPanel;
 
@@ -58,7 +59,7 @@ public class MainController {
                 case "ThongKe":
                     view = new ThongKePanel(this.jfrMain);
                     break;
-                case "PhanThuong":
+                case "BuoiHop":
                 	view = new ViewBuoiHop(this.jfrMain);
                 	break;
                 //any more
@@ -131,7 +132,7 @@ public class MainController {
                 case "ThongKe":
                     view = new ThongKePanel(this.jfrMain);
                     break;
-                case "PhanThuong":
+                case "BuoiHop":
                 	view = new ViewBuoiHop(this.jfrMain);
                 	break;
                 default:

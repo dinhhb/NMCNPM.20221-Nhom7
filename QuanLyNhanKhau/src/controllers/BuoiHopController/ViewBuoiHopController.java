@@ -46,10 +46,11 @@ public class ViewBuoiHopController {
     public ViewBuoiHopController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
-        this.btn = btn;
         classTableModel = new ClassTableModel();
         this.BuoiHopService = new BuoiHopService();
         this.listBuoiHop = this.BuoiHopService.layDanhSachBuoiHop();
+//        System.out.println("controllers.LichHopPanelController.<init>()");
+
         initAction();
     }
 
@@ -59,28 +60,28 @@ public class ViewBuoiHopController {
     
     //
     public void initAction(){
-//        this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
-//            @Override
-//            public void insertUpdate(DocumentEvent e) {
-//                String key = jtfSearch.getText();
-//                listBuoiHop = nhanKhauService.search(key.trim());
-//                setDataTable();
-//            }
-//
-//            @Override
-//            public void removeUpdate(DocumentEvent e) {
-//                String key = jtfSearch.getText();
-//                listNhanKhauBeans = nhanKhauService.search(key.trim());
-//                setDataTable();
-//            }
-//
-//            @Override
-//            public void changedUpdate(DocumentEvent e) {
-//                String key = jtfSearch.getText();
-//                listNhanKhauBeans = nhanKhauService.search(key.trim());
-//                setDataTable();
-//            }
-//        });
+        this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String key = jtfSearch.getText();
+                listBuoiHop = BuoiHopService.search(key.trim());
+                setDataTable();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String key = jtfSearch.getText();
+                listBuoiHop = BuoiHopService.search(key.trim());
+                setDataTable();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                String key = jtfSearch.getText();
+                listBuoiHop = BuoiHopService.search(key.trim());
+                setDataTable();
+            }
+        });
     }
     
     public void setDataTable() {
@@ -88,6 +89,14 @@ public class ViewBuoiHopController {
         this.listBuoiHop.forEach(buoihop -> {
             listItem.add(buoihop);
         });
+//        for (int i=0;i<listItem.size();i++){
+//            System.out.println(listItem.get(i).getMaBuoiHop());
+//            System.out.println(listItem.get(i).getChuDe());
+//            System.out.println(listItem.get(i).getThoiGian());
+//            System.out.println(listItem.get(i).getDiaDiem());
+//            System.out.println(listItem.get(i).getSoLuong());
+//            System.out.println(listItem.get(i).getTrangThai());
+//        }
         DefaultTableModel model = classTableModel.setTableCuocHop(listItem, COLUMNS);
         JTable table = new JTable(model) {
             @Override
@@ -128,7 +137,7 @@ public class ViewBuoiHopController {
         
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
-        scroll.setPreferredSize(new Dimension(1350, 400));
+        scroll.setPreferredSize(new Dimension(800, 400));
         jpnView.removeAll();
         jpnView.setLayout(new BorderLayout());
         jpnView.add(scroll);

@@ -47,7 +47,7 @@ public class MainFrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMucBean("HoKhau", HoKhauBtn, jlbHoKhau));
         listDanhMuc.add(new DanhMucBean("ThongKe", ThongKeBtn, jlbThongKe));
         listDanhMuc.add(new DanhMucBean("TimKiem", TimKiemBtn, lblTimKiem));
-        listDanhMuc.add(new DanhMucBean("PhanThuong", PhanThuongBtn, lblPhanThuong));
+        listDanhMuc.add(new DanhMucBean("BuoiHop", BuoiHopBtn, lblBuoiHop));
         
         MainController controller = new MainController(jpnBean, this);
         controller.setView(Home, jblTrangChu, "TrangChu");
@@ -214,30 +214,30 @@ public class MainFrame extends javax.swing.JFrame {
         );
         TimKiemBtn.setLayout(gl_TimKiemBtn);
         
-        PhanThuongBtn = new JPanel();
-        PhanThuongBtn.setBackground(new Color(102, 102, 102));
+        BuoiHopBtn = new JPanel();
+        BuoiHopBtn.setBackground(new Color(102, 102, 102));
         
-        lblPhanThuong = new JLabel();
-        lblPhanThuong.setIcon(new ImageIcon(MainFrame.class.getResource("/Icons/icon-gift.jpg")));
-        lblPhanThuong.setText("Phần thưởng");
-        lblPhanThuong.setForeground(Color.WHITE);
-        lblPhanThuong.setFont(new Font("Arial", Font.BOLD, 14));
-        GroupLayout gl_PhanThuongBtn = new GroupLayout(PhanThuongBtn);
-        gl_PhanThuongBtn.setHorizontalGroup(
-        	gl_PhanThuongBtn.createParallelGroup(Alignment.LEADING)
-        		.addGroup(gl_PhanThuongBtn.createSequentialGroup()
+        lblBuoiHop = new JLabel();
+        lblBuoiHop.setIcon(new ImageIcon(MainFrame.class.getResource("/Icons/BuoiHop.png")));
+        lblBuoiHop.setText("Buổi Họp");
+        lblBuoiHop.setForeground(Color.WHITE);
+        lblBuoiHop.setFont(new Font("Arial", Font.BOLD, 14));
+        GroupLayout gl_BuoiHopBtn = new GroupLayout(BuoiHopBtn);
+        gl_BuoiHopBtn.setHorizontalGroup(
+        	gl_BuoiHopBtn.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_BuoiHopBtn.createSequentialGroup()
         			.addContainerGap()
-        			.addComponent(lblPhanThuong, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+        			.addComponent(lblBuoiHop, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
         			.addContainerGap())
         );
-        gl_PhanThuongBtn.setVerticalGroup(
-        	gl_PhanThuongBtn.createParallelGroup(Alignment.LEADING)
-        		.addGroup(gl_PhanThuongBtn.createSequentialGroup()
+        gl_BuoiHopBtn.setVerticalGroup(
+        	gl_BuoiHopBtn.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_BuoiHopBtn.createSequentialGroup()
         			.addContainerGap()
-        			.addComponent(lblPhanThuong, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+        			.addComponent(lblBuoiHop, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
         			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PhanThuongBtn.setLayout(gl_PhanThuongBtn);
+        BuoiHopBtn.setLayout(gl_BuoiHopBtn);
         
         panel = new JPanel();
         panel.setBackground(Color.WHITE);
@@ -253,7 +253,7 @@ public class MainFrame extends javax.swing.JFrame {
         				.addComponent(ThongKeBtn, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
         				.addComponent(Home, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
         				.addComponent(TimKiemBtn, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-        				.addComponent(PhanThuongBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        				.addComponent(BuoiHopBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         		.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
         jpnMenuLayout.setVerticalGroup(
@@ -271,7 +271,7 @@ public class MainFrame extends javax.swing.JFrame {
         			.addPreferredGap(ComponentPlacement.UNRELATED)
         			.addComponent(TimKiemBtn, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(PhanThuongBtn, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+        			.addComponent(BuoiHopBtn, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
         			.addContainerGap(78, Short.MAX_VALUE))
         );
         
@@ -407,8 +407,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jpnBean;
     private javax.swing.JPanel jpnContainer;
     private javax.swing.JPanel jpnMenu;
-    private JPanel PhanThuongBtn;
-    private JLabel lblPhanThuong;
+    private JPanel BuoiHopBtn;
+    private JLabel lblBuoiHop;
     private JPanel TimKiemBtn;
     private JLabel lblTimKiem;
     private JPanel panel;

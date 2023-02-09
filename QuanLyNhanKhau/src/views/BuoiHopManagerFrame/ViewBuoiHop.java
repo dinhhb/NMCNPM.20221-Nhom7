@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package views.PhanThuongManagerFrame;
+package views.BuoiHopManagerFrame;
 
 import controllers.BuoiHopController.ViewBuoiHopController;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import models.BuoiHop;
 import services.BuoiHopService;
 
-//import static sun.security.util.ObjectIdentifier.pack;
+//import static sun.security.util.ObjectIdentifieadminr.pack;
 
 /**
  *
@@ -27,19 +27,16 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     
     List<BuoiHop> listBuoiHop;
     DefaultTableModel model;
-    private JTextField jtfSearch;
+//    private JTextField jtfSearch;
     public ViewBuoiHop() {
         initComponents();
-//         listBuoiHop =  new  BuoiHopService().layDanhSachBuoiHop();
-//         model = (DefaultTableModel) TableBuoiHop.getModel();
-//         ShowBuoiHop();
     }
     private JFrame parentJFrame;
     private ViewBuoiHopController controller = null;
     public ViewBuoiHop(JFrame parentFrame) {
         this.parentJFrame = parentFrame;
         initComponents();
-        controller = new ViewBuoiHopController(tablePanel, jtfSearch);
+        controller = new ViewBuoiHopController(tablePanel1, jtfSearch);
         controller.setParentJFrame(parentJFrame);
         controller.setDataTable();
 //        ShowBuoiHop();
@@ -61,7 +58,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         ThemBuoiHop = new javax.swing.JButton();
         DiemDanh = new javax.swing.JButton();
         CapNhat = new javax.swing.JButton();
-        TimKiemBuoiHop = new javax.swing.JTextField();
+        jtfSearch = new javax.swing.JTextField();
         tablePanel1 = new javax.swing.JPanel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -79,8 +76,10 @@ public class ViewBuoiHop extends javax.swing.JPanel {
             .addGap(0, 389, Short.MAX_VALUE)
         );
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Tìm Kiếm");
 
+        ThemBuoiHop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ThemBuoiHop.setText("Thêm buổi họp");
         ThemBuoiHop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,25 +87,29 @@ public class ViewBuoiHop extends javax.swing.JPanel {
             }
         });
 
+        DiemDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         DiemDanh.setText("Điểm danh");
 
+        CapNhat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CapNhat.setText("Cập nhật");
 
-        TimKiemBuoiHop.addActionListener(new java.awt.event.ActionListener() {
+        jtfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TimKiemBuoiHopActionPerformed(evt);
             }
         });
 
+        tablePanel1.setName(""); // NOI18N
+
         javax.swing.GroupLayout tablePanel1Layout = new javax.swing.GroupLayout(tablePanel1);
         tablePanel1.setLayout(tablePanel1Layout);
         tablePanel1Layout.setHorizontalGroup(
             tablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         tablePanel1Layout.setVerticalGroup(
             tablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 345, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -115,36 +118,36 @@ public class ViewBuoiHop extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TimKiemBuoiHop, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
-                .addComponent(ThemBuoiHop)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(DiemDanh)
-                .addGap(18, 18, 18)
-                .addComponent(CapNhat)
-                .addGap(20, 20, 20))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(tablePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tablePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(ThemBuoiHop)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(DiemDanh)
+                        .addGap(18, 18, 18)
+                        .addComponent(CapNhat)
+                        .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ThemBuoiHop)
-                        .addComponent(DiemDanh)
-                        .addComponent(CapNhat))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(TimKiemBuoiHop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(tablePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(153, 153, 153))
+                        .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ThemBuoiHop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DiemDanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(tablePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -214,7 +217,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     private javax.swing.JButton CapNhat;
     private javax.swing.JButton DiemDanh;
     private javax.swing.JButton ThemBuoiHop;
-    private javax.swing.JTextField TimKiemBuoiHop;
+    private javax.swing.JTextField jtfSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
