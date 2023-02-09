@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 09, 2023 lúc 03:10 AM
+-- Thời gian đã tạo: Th2 09, 2023 lúc 03:16 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -77,8 +77,7 @@ INSERT INTO `chung_minh_thu` (`ID`, `idNhanKhau`, `soCMT`, `ngayCap`, `noiCap`) 
 (22, 35, '100000000001', NULL, NULL),
 (23, 36, '100000000002', NULL, NULL),
 (24, 37, '000000000010', NULL, NULL),
-(25, 38, '000000000011', NULL, NULL),
-(26, 39, '000000000123', NULL, NULL);
+(25, 38, '000000000011', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -256,6 +255,66 @@ CREATE TABLE `lich_su_thay_doink` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `nhan_khau`
+--
+
+CREATE TABLE `nhan_khau` (
+  `ID` int(11) NOT NULL,
+  `maNhanKhau` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hoTen` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bietDanh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `namSinh` date DEFAULT NULL,
+  `gioiTinh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `noiSinh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nguyenQuan` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `danToc` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tonGiao` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `quocTich` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `soHoChieu` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `noiThuongTru` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `diaChiHienNay` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `trinhDoHocVan` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `TrinhDoChuyenMon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bietTiengDanToc` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `trinhDoNgoaiNgu` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ngheNghiep` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `noiLamViec` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tienAn` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ngayChuyenDen` date DEFAULT NULL,
+  `lyDoChuyenDen` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ngayChuyenDi` date DEFAULT NULL,
+  `lyDoChuyenDi` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `diaChiMoi` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ngayTao` date DEFAULT NULL,
+  `idNguoiTao` int(11) DEFAULT NULL,
+  `ngayXoa` date DEFAULT NULL,
+  `idNguoiXoa` int(11) DEFAULT NULL,
+  `lyDoXoa` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ghiChu` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nhan_khau`
+--
+
+INSERT INTO `nhan_khau` (`ID`, `maNhanKhau`, `hoTen`, `bietDanh`, `namSinh`, `gioiTinh`, `noiSinh`, `nguyenQuan`, `danToc`, `tonGiao`, `quocTich`, `soHoChieu`, `noiThuongTru`, `diaChiHienNay`, `trinhDoHocVan`, `TrinhDoChuyenMon`, `bietTiengDanToc`, `trinhDoNgoaiNgu`, `ngheNghiep`, `noiLamViec`, `tienAn`, `ngayChuyenDen`, `lyDoChuyenDen`, `ngayChuyenDi`, `lyDoChuyenDi`, `diaChiMoi`, `ngayTao`, `idNguoiTao`, `ngayXoa`, `idNguoiXoa`, `lyDoXoa`, `ghiChu`) VALUES
+(26, NULL, 'Trinh Văn An', '', '1990-12-07', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 1 Tạ Quang Bưu, Hai Bà Trưng, Hà Nội', 'Số 1 Tạ Quang Bưu, Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình đọ B', 'Giáo Viên', 'Trường THCS Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(27, NULL, 'Trần Thanh Duyên', '', '1997-12-23', 'Nữ', NULL, 'Hải Phòng', 'Kinh', 'Không', 'Việt Nam', '', 'Số 3, đường Đình Đông, phường Đình Đông, quận Ngô Quyền, Hải Phòng', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Nhân viên văn phòng', 'Công ty ABC', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(28, NULL, 'Nguyễn Minh Quân', '', '1995-05-31', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Kỹ sư', 'Viettel', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(29, NULL, 'Nguyễn Tiến Dũng', '', '1964-06-03', 'Nam', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Kỹ sư', 'Không', 'Không', 'Phó giám đốc', 'Công ty EXE', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(30, NULL, 'Vũ Mỹ Linh', '', '1965-12-06', 'Nữ', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12', 'Cử Nhân', 'Không', 'Không', 'Nội trợ', 'Tại nhà', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(31, NULL, 'Nguyễn Tiến Đạt', '', '1990-09-09', 'Nam', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Kỹ sư', 'không', 'Anh trình độ C', 'Kỹ sư điện', 'Công ty điện EVN', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(32, NULL, 'Nguyễn Trà My', '', '1997-12-12', 'Nữ', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'không', 'Anh trình đố D', 'Luật sư', 'Văn phòng luật sư 123', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(33, NULL, 'Trần Văn Nam', '', '1980-07-09', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Tiến sĩ', 'Không', 'Anh trình độ D', 'Giảng viên đại học', 'Đại học Bách khoa Hà Nội', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(34, NULL, 'Nguyễn Minh Tuyết', '', '1985-09-02', 'Nữ', NULL, 'Nam Định', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Bác sĩ', 'Bệnh viện quốc tế HJK', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(35, NULL, 'Trần Trung Kiên', '', '2008-12-25', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '6/12 chính quy', 'Không', 'Không', 'Không', 'Học sinh', 'Trường THCS Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(36, NULL, 'Trần Thúy Ngọc', '', '2013-01-15', 'Nữ', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '1/12 chính quy', 'Không', 'Không', 'Không', 'Học sinh', 'Trường tiểu học Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(37, NULL, 'Lý Văn Công', '', '1945-06-04', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '10/12 chính quy', 'Không', 'Không', 'Không', 'Về hưu', 'Không', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(38, NULL, 'Bùi Thị Hà', '', '1948-02-03', 'Nữ', NULL, 'Hải Phòng', 'Kinh', 'Không', 'Việt Nam', '', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '10/12', 'Không', 'Không', 'Không', 'Nội trợ', 'Tại nhà', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tam_tru`
 --
 
@@ -421,6 +480,55 @@ ALTER TABLE `khai_tu`
   ADD KEY `idNguoiChet` (`idNguoiChet`);
 
 --
+-- Chỉ mục cho bảng `lich_su_thay_doink`
+--
+ALTER TABLE `lich_su_thay_doink`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Chỉ mục cho bảng `nhan_khau`
+--
+ALTER TABLE `nhan_khau`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `idNguoiTao` (`idNguoiTao`),
+  ADD KEY `idNguoiXoa` (`idNguoiXoa`);
+ALTER TABLE `nhan_khau` ADD FULLTEXT KEY `hoTen` (`hoTen`,`bietDanh`);
+
+--
+-- Chỉ mục cho bảng `tam_tru`
+--
+ALTER TABLE `tam_tru`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `idNhanKhau` (`idNhanKhau`);
+
+--
+-- Chỉ mục cho bảng `tam_vang`
+--
+ALTER TABLE `tam_vang`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `idNhanKhau` (`idNhanKhau`);
+
+--
+-- Chỉ mục cho bảng `thanh_vien_cua_ho`
+--
+ALTER TABLE `thanh_vien_cua_ho`
+  ADD PRIMARY KEY (`idNhanKhau`,`idHoKhau`),
+  ADD KEY `idHoKhau` (`idHoKhau`);
+
+--
+-- Chỉ mục cho bảng `tieu_su`
+--
+ALTER TABLE `tieu_su`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `idNhanKhau` (`idNhanKhau`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -428,13 +536,73 @@ ALTER TABLE `khai_tu`
 -- AUTO_INCREMENT cho bảng `chung_minh_thu`
 --
 ALTER TABLE `chung_minh_thu`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT cho bảng `diemdanhtable`
 --
 ALTER TABLE `diemdanhtable`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT cho bảng `dinh_chinh`
+--
+ALTER TABLE `dinh_chinh`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `gia_dinh`
+--
+ALTER TABLE `gia_dinh`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT cho bảng `ho_khau`
+--
+ALTER TABLE `ho_khau`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT cho bảng `khai_tu`
+--
+ALTER TABLE `khai_tu`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `lich_su_thay_doink`
+--
+ALTER TABLE `lich_su_thay_doink`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `nhan_khau`
+--
+ALTER TABLE `nhan_khau`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT cho bảng `tam_tru`
+--
+ALTER TABLE `tam_tru`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `tam_vang`
+--
+ALTER TABLE `tam_vang`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `tieu_su`
+--
+ALTER TABLE `tieu_su`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -445,6 +613,64 @@ ALTER TABLE `diemdanhtable`
 --
 ALTER TABLE `chung_minh_thu`
   ADD CONSTRAINT `chung_minh_thu_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `dinh_chinh`
+--
+ALTER TABLE `dinh_chinh`
+  ADD CONSTRAINT `dinh_chinh_ibfk_1` FOREIGN KEY (`idHoKhau`) REFERENCES `ho_khau` (`ID`),
+  ADD CONSTRAINT `dinh_chinh_ibfk_2` FOREIGN KEY (`nguoiThayDoi`) REFERENCES `users` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `gia_dinh`
+--
+ALTER TABLE `gia_dinh`
+  ADD CONSTRAINT `gia_dinh_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `ho_khau`
+--
+ALTER TABLE `ho_khau`
+  ADD CONSTRAINT `ho_khau_ibfk_1` FOREIGN KEY (`idChuHo`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `khai_tu`
+--
+ALTER TABLE `khai_tu`
+  ADD CONSTRAINT `khai_tu_ibfk_1` FOREIGN KEY (`idNguoiKhai`) REFERENCES `nhan_khau` (`ID`),
+  ADD CONSTRAINT `khai_tu_ibfk_2` FOREIGN KEY (`idNguoiChet`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `nhan_khau`
+--
+ALTER TABLE `nhan_khau`
+  ADD CONSTRAINT `nhan_khau_ibfk_1` FOREIGN KEY (`idNguoiTao`) REFERENCES `users` (`ID`),
+  ADD CONSTRAINT `nhan_khau_ibfk_2` FOREIGN KEY (`idNguoiXoa`) REFERENCES `users` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `tam_tru`
+--
+ALTER TABLE `tam_tru`
+  ADD CONSTRAINT `tam_tru_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `tam_vang`
+--
+ALTER TABLE `tam_vang`
+  ADD CONSTRAINT `tam_vang_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `thanh_vien_cua_ho`
+--
+ALTER TABLE `thanh_vien_cua_ho`
+  ADD CONSTRAINT `thanh_vien_cua_ho_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`),
+  ADD CONSTRAINT `thanh_vien_cua_ho_ibfk_2` FOREIGN KEY (`idHoKhau`) REFERENCES `ho_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `tieu_su`
+--
+ALTER TABLE `tieu_su`
+  ADD CONSTRAINT `tieu_su_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
