@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -49,6 +50,7 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
 //        getMaHoKhautuCCCD ();
         controller = new DiemDanhBuoiHopController(jtfSearch,jtfSearch2, tableJpn, DiemDanhbt,buoiHop);
         controller.setParentJFrame(parentFrame);
+
         
 //        ShowHoKhau();
         setInfo();
@@ -117,13 +119,28 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
         DiemDanhbt.setText("Điểm danh");
         DiemDanhbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choseHoKhau ();
+                try {
+                    choseHoKhau ();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                JOptionPane.showMessageDialog(null, "Thêm thành công!!");
+                close();
+                parentController.refreshData();
             }
         });
 
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton3.setText("Thoát");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                close();
+                parentController.refreshData();
+            }
+        });
 
         javax.swing.GroupLayout tableJpnLayout = new javax.swing.GroupLayout(tableJpn);
         tableJpn.setLayout(tableJpnLayout);
@@ -220,7 +237,9 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfSearchActionPerformed
     void close() {
         this.parentFrame.setEnabled(true);
+
         dispose();
+
     }
     private void setInfo() {
 //        ChungMinhThuModel cmt = this.nhanKhauBean.getChungMinhThuModel();
@@ -250,7 +269,7 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
 //            }
 //
 //    }
-    private void choseHoKhau () {
+    private void choseHoKhau () throws SQLException, ClassNotFoundException {
 
     List<DiemDanhModel> listChose =   controller.getDiemDanh();
     for (int i=0;i<listChose.size();i++){
@@ -276,6 +295,7 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
                 System.out.println(listChose.get(i).getSoHoKhau()+"Ho khau co roi nen khong can lam gi ca ");
             }else {
                 System.out.println(listChose.get(i).getSoHoKhau()+"Chua co t nen add vao database");
+                new DiemDanhService().addDiemDanh(listChose.get(i).getSoHoKhau(),listChose.get(i).getMaBuoiHop());
             }
 
         }
@@ -291,7 +311,7 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
                 }
             }
                 if (checkxemdacoroithixoa){
-                    System.out.println(listChose.get(i).getSoHoKhau()+"Ho khau da add gio phai xoa ");
+                    new DiemDanhService().deleteDiemDanh(listChose.get(i).getSoHoKhau(),listChose.get(i).getMaBuoiHop());
                 }else {
                     System.out.println(listChose.get(i).getSoHoKhau()+"Ho khau chua co nen khong can lam gi ca ");
                 }

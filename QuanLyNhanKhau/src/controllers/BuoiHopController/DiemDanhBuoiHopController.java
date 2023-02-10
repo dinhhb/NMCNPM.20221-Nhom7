@@ -194,6 +194,11 @@ public class DiemDanhBuoiHopController  {
         }
 
     }
+    public void refreshData() {
+        this.list = hoKhauService.getListHoKhau();
+        themTrangThai();
+        setData();
+    }
 
     
 }
