@@ -11,22 +11,21 @@ Nhóm 7 - CNTT Việt Pháp - Nhập môn Công nghệ phần mềm - ĐH Bách 
 ## Tài liệu
 [Báo cáo bài tập lớn](https://docs.google.com/document/d/1lQqDunF3r34h2XQ7es89hZckUDqJg4qh/edit?usp=sharing&ouid=101504247586625634916&rtpof=true&sd=true)
 
-[Đề bài](https://docs.google.com/document/d/1l4P31ZByuccmjFdiW1dLIc14_SrPfdaS1rZnk8fUxiE/edit?usp=sharing)
+[Đề tài](https://docs.google.com/document/d/1l4P31ZByuccmjFdiW1dLIc14_SrPfdaS1rZnk8fUxiE/edit?usp=sharing)
+
+## Yêu cầu
+Cài đặt IDE IntelliJ, xampp
 
 ## Hướng dẫn
-1. Mở eclipse, chuột phải vào tên project, chọn Build path > Configure build path > Libraries > Add JARS và thêm như sau
+1. Clone project về, mở IntelliJ, chọn File > New > Project from Existing sources > Import project from external model > Maven
 
-![alt](https://i.ibb.co/Chhpqg4/Screen-Shot-2023-01-25-at-21-22-03.png)
+2. Chuột phải vào src > Mark Directory as > Mark as Sources Root
 
-Lưu ý các file .jar nằm trong thư mục Lib
+3. Mở xampp kết nối localhost
 
-2. Tải [xampp](https://www.apachefriends.org/download.html) để kết nối localhost
+4. Truy cập [phpMyAdmin](http://localhost/phpmyadmin/) và tạo database "quan-li-nhan-khau"
 
-3. Truy cập [phpMyAdmin](http://localhost/phpmyadmin/) và tạo database
-
-4. Vào file QuanLyNhanKhau/QuanLyNhanKhau/src/services/MysqlConnection sửa lại tên database theo tên database vừa tạo 
-
-5. Chạy file QuanLyNhanKhau/QuanLyNhanKhau/src/quanlynhankhau/QuanLyNhanKhau.java để bắt đầu chương trình
+5. Chạy file QuanLyNhanKhau/src/quanlynhankhau/QuanLyNhanKhau.java để bắt đầu chương trình
 
 ## Đóng góp
 
