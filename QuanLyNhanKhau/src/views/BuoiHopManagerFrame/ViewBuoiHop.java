@@ -5,16 +5,14 @@
 package views.BuoiHopManagerFrame;
 
 import controllers.BuoiHopController.ViewBuoiHopController;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import models.BuoiHop;
 import services.BuoiHopService;
-import views.NhanKhauManagerFrame.PeopleChangeJFrame;
+import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
 
 //import static sun.security.util.ObjectIdentifieadminr.pack;
 
@@ -27,11 +25,10 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     /**
      * Creates new form BuoiHop
      */
-    
-    List<BuoiHop> listBuoiHop;
 
+    List<BuoiHop> listBuoiHop;
     DefaultTableModel model;
-//    private JTextField jtfSearch;
+    //    private JTextField jtfSearch;
     public ViewBuoiHop() {
         initComponents();
     }
@@ -40,9 +37,10 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     public ViewBuoiHop(JFrame parentFrame) {
         this.parentJFrame = parentFrame;
         initComponents();
-        controller = new ViewBuoiHopController(tablePanel1, jtfSearch,DiemDanh);
+        controller = new ViewBuoiHopController(tablePanel1, jtfSearch);
         controller.setParentJFrame(parentJFrame);
         controller.setDataTable();
+//        ShowBuoiHop();
     }
 
     /**
@@ -58,7 +56,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         jMenu1 = new javax.swing.JMenu();
         tablePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        ThemBuoiHop = new javax.swing.JButton();
+        themBuoiHop = new javax.swing.JButton();
         DiemDanh = new javax.swing.JButton();
         CapNhat = new javax.swing.JButton();
         jtfSearch = new javax.swing.JTextField();
@@ -71,20 +69,20 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
         tablePanel.setLayout(tablePanelLayout);
         tablePanelLayout.setHorizontalGroup(
-            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+                tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE)
         );
         tablePanelLayout.setVerticalGroup(
-            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
+                tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 389, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Tìm Kiếm");
 
-        ThemBuoiHop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ThemBuoiHop.setText("Thêm buổi họp");
-        ThemBuoiHop.addActionListener(new java.awt.event.ActionListener() {
+        themBuoiHop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        themBuoiHop.setText("Thêm buổi họp");
+        themBuoiHop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ThemBuoiHopActionPerformed(evt);
             }
@@ -92,12 +90,6 @@ public class ViewBuoiHop extends javax.swing.JPanel {
 
         DiemDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         DiemDanh.setText("Điểm danh");
-        DiemDanh.setEnabled(false);
-        DiemDanh.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                DiemDanhActionPerformed(e);
-            }
-        });
 
         CapNhat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CapNhat.setText("Cập nhật");
@@ -113,82 +105,76 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         javax.swing.GroupLayout tablePanel1Layout = new javax.swing.GroupLayout(tablePanel1);
         tablePanel1.setLayout(tablePanel1Layout);
         tablePanel1Layout.setHorizontalGroup(
-            tablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+                tablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE)
         );
         tablePanel1Layout.setVerticalGroup(
-            tablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
+                tablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 345, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tablePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(ThemBuoiHop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(DiemDanh)
-                        .addGap(18, 18, 18)
-                        .addComponent(CapNhat)
-                        .addGap(10, 10, 10))))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(tablePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(20, 20, 20))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(90, 90, 90)
+                                                .addComponent(themBuoiHop)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                                .addComponent(DiemDanh)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(CapNhat)
+                                                .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ThemBuoiHop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DiemDanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(tablePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabel1)
+                                                .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(themBuoiHop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DiemDanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                                .addComponent(tablePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+
 //    int i=1;
-//    private void ShowBuoiHop() {                                        
+//    private void ShowBuoiHop() {
 //        // TODO add your handling code here:
-//        
+//
 //       for(BuoiHop b: listBuoiHop){
 //        model.addRow(new Object[]{i++,
 //               b.getMaBuoiHop(),b.getChuDe(),b.getThoiGian(),b.getDiaDiem(),b.getSoLuong()
 //                ,b.getTrangThai()
 //        });
 //       }
-//      
-        
-        
-//    }  
+//
 
 
-    private void DiemDanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBuoiHopActionPerformed
-        // TODO add your handling code here:
-        BuoiHop info = controller.getInfo();
-        DiemDanhBuoiHop diemDanhBuoiHop= new DiemDanhBuoiHop(this.controller,this.parentJFrame,info);
-        diemDanhBuoiHop.setLocationRelativeTo(null);
-        diemDanhBuoiHop.setResizable(false);
-        diemDanhBuoiHop.setVisible(true);
+//    }
 
-    }//GEN-LAST:event_ThemBuoiHopActionPerformed
+
+
     private void ThemBuoiHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBuoiHopActionPerformed
         // TODO add your handling code here:
-
-
+        ThemBuoiHop themBuoiHop1 = new ThemBuoiHop(this.controller, this.parentJFrame);
+        themBuoiHop1.setLocationRelativeTo(null);
+        themBuoiHop1.setResizable(false);
+        themBuoiHop1.setVisible(true);
     }//GEN-LAST:event_ThemBuoiHopActionPerformed
 
     private void TimKiemBuoiHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemBuoiHopActionPerformed
@@ -202,7 +188,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
 //         */
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -226,7 +212,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
 //        /* Create and display the form */
 ////        java.awt.EventQueue.invokeLater(new Runnable() {
 ////            public void run() {
-////                
+////
 ////                new ViewBuoiHop().setVisible(true);
 ////            }
 ////        });
@@ -235,7 +221,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CapNhat;
     private javax.swing.JButton DiemDanh;
-    private javax.swing.JButton ThemBuoiHop;
+    private javax.swing.JButton themBuoiHop;
     private javax.swing.JTextField jtfSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
