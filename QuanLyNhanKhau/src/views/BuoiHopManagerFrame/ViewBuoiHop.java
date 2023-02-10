@@ -5,6 +5,9 @@
 package views.BuoiHopManagerFrame;
 
 import controllers.BuoiHopController.ViewBuoiHopController;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -12,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import models.BuoiHop;
 import services.BuoiHopService;
+import views.NhanKhauManagerFrame.PeopleChangeJFrame;
 
 //import static sun.security.util.ObjectIdentifieadminr.pack;
 
@@ -26,6 +30,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
      */
     
     List<BuoiHop> listBuoiHop;
+
     DefaultTableModel model;
 //    private JTextField jtfSearch;
     public ViewBuoiHop() {
@@ -36,10 +41,9 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     public ViewBuoiHop(JFrame parentFrame) {
         this.parentJFrame = parentFrame;
         initComponents();
-        controller = new ViewBuoiHopController(tablePanel1, jtfSearch);
+        controller = new ViewBuoiHopController(tablePanel1, jtfSearch,DiemDanh);
         controller.setParentJFrame(parentJFrame);
         controller.setDataTable();
-//        ShowBuoiHop();
     }
 
     /**
@@ -89,6 +93,12 @@ public class ViewBuoiHop extends javax.swing.JPanel {
 
         DiemDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         DiemDanh.setText("Điểm danh");
+        DiemDanh.setEnabled(false);
+        DiemDanh.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                DiemDanhActionPerformed(e);
+            }
+        });
 
         CapNhat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CapNhat.setText("Cập nhật");
@@ -165,11 +175,21 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         
         
 //    }  
-    
-    
-    
+
+
+    private void DiemDanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBuoiHopActionPerformed
+        // TODO add your handling code here:
+        BuoiHop info = controller.getInfo();
+        DiemDanhBuoiHop diemDanhBuoiHop= new DiemDanhBuoiHop(this.controller,this.parentJFrame,info);
+        diemDanhBuoiHop.setLocationRelativeTo(null);
+        diemDanhBuoiHop.setResizable(false);
+        diemDanhBuoiHop.setVisible(true);
+
+    }//GEN-LAST:event_ThemBuoiHopActionPerformed
     private void ThemBuoiHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBuoiHopActionPerformed
         // TODO add your handling code here:
+
+
     }//GEN-LAST:event_ThemBuoiHopActionPerformed
 
     private void TimKiemBuoiHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemBuoiHopActionPerformed

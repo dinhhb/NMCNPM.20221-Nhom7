@@ -113,11 +113,6 @@ public class BuoiHopService {
         // truy cap db
         // create query
         try {
-            query = "SELECT * "
-                    + "FROM buoihoptable "
-                    + "WHERE chude LIKE '%"
-                    + keyword
-                    + "%'";
             query = "SELECT buoihoptable.id, buoihoptable.chude, buoihoptable.thoigian,buoihoptable.diadiem, count(diemdanhtable.mahokhau) as soluong\n" +
                     "FROM buoihoptable\n" +
                     "LEFT JOIN diemdanhtable\n" +

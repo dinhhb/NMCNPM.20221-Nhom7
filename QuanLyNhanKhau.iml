@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="EclipseModuleManager">
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/jcalendar-1.2.2.jar" />
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/poi-bin-4.1.1-20191023/poi-4.1.1/poi-4.1.1.jar" />
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/poi-bin-4.1.1-20191023/poi-4.1.1/poi-examples-4.1.1.jar" />
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/poi-bin-4.1.1-20191023/poi-4.1.1/poi-excelant-4.1.1.jar" />
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/poi-bin-4.1.1-20191023/poi-4.1.1/poi-ooxml-4.1.1.jar" />
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/poi-bin-4.1.1-20191023/poi-4.1.1/poi-ooxml-schemas-4.1.1.jar" />
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/poi-bin-4.1.1-20191023/poi-4.1.1/poi-scratchpad-4.1.1.jar" />
-    <libelement value="file://E:/Downloads/NMCNPM.KSTN.20211-Nhom06-main/NMCNPM.KSTN.20211-Nhom06-main/QuanLyNhanKhau/Lib/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar" />
-    <src_description expected_position="0">
-      <src_folder value="file://$MODULE_DIR$/QuanLyNhanKhau/src" expected_position="0" />
-    </src_description>
-  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_19">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />

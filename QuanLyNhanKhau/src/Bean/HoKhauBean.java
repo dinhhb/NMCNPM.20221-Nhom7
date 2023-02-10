@@ -19,6 +19,7 @@ public class HoKhauBean {
     private List<NhanKhauModel> listNhanKhauModels;
     private List<ThanhVienCuaHoModel> listThanhVienCuaHo;
     private List<LichSuThayDoiNhanKhauModel> listLSuNhanKhau;
+    private Boolean trangThai;
 
     public HoKhauBean(HoKhauModel hoKhauModel, NhanKhauModel chuHo, List<NhanKhauModel> listNhanKhauModels, 
     		List<ThanhVienCuaHoModel> listThanhVienCuaHo, List<LichSuThayDoiNhanKhauModel> listLichSu) {
@@ -36,8 +37,14 @@ public class HoKhauBean {
         this.listThanhVienCuaHo = new ArrayList<>();
         this.listLSuNhanKhau = new ArrayList<>();
     }
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai=trangThai;
+    }
 
-    
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
     public HoKhauModel getHoKhauModel() {
         return hoKhauModel;
     }

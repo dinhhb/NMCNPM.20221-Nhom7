@@ -6,6 +6,7 @@ import Bean.NhanKhauBean;
 //import Bean.TraoQuaHoKhauBean;
 
 import java.util.List;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -86,7 +87,39 @@ public class TableModelHoKhau {
         });
         return dtm;
     }
-    
+    public DefaultTableModel setTableHoKhauDiemDanh(List<HoKhauBean> listItem, String[] listColumn) {
+        final int columns = listColumn.length;
+        String[] columas =listColumn;
+        boolean[] edittable= {false,false,false,true};
+        Class [] types= new Class[]{ java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Boolean.class};
+        DefaultTableModel dtm = new DefaultTableModel()  {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return edittable[column]; //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        };
+
+        dtm.setColumnIdentifiers(listColumn);
+
+
+        Object[] obj;
+        obj = new Object[columns];
+        listItem.forEach((HoKhauBean item) -> {
+            obj[0] = item.getHoKhauModel().getMaHoKhau();
+            obj[1] = item.getChuHo().getHoTen();
+            obj[2] = item.getHoKhauModel().getDiaChi();
+            obj[3] = item.getTrangThai();
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
+
+
+
 //    public DefaultTableModel setTableTraoQuaHoKhau(List<TraoQuaHoKhauBean> listItem, String[] listColumn) {
 //        final int columns = listColumn.length;
 //        DefaultTableModel dtm = new DefaultTableModel()  {

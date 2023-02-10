@@ -4,7 +4,6 @@
  */
 package controllers.BuoiHopController;
 
-import Bean.NhanKhauBean;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -23,11 +22,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import models.BuoiHop;
-import models.NhanKhauModel;
 import services.BuoiHopService;
-import services.NhanKhauService;
+import services.DiemDanhService;
 import utility.ClassTableModel;
-import views.infoViews.InfoJframe;
 
 /**
  *
@@ -38,19 +35,21 @@ public class ViewBuoiHopController {
     private JPanel jpnView;
     private JTextField jtfSearch;
     private BuoiHopService BuoiHopService;
+    private DiemDanhService diemDanhService;
     private List<BuoiHop> listBuoiHop;
     private ClassTableModel classTableModel = null;
     private final String[] COLUMNS = {"Mã buổi họp", "Chủ đề", "Thời gian", "Địa điểm", "Số lượng", "Trạng thái"};
     private JFrame parentJFrame;
-    private NhanKhauBean temp;
-    public ViewBuoiHopController(JPanel jpnView, JTextField jtfSearch) {
+    private BuoiHop temp;
+    public ViewBuoiHopController(JPanel jpnView, JTextField jtfSearch,JButton btn) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
+        this.btn = btn;
         classTableModel = new ClassTableModel();
         this.BuoiHopService = new BuoiHopService();
+        this.diemDanhService =new DiemDanhService();
         this.listBuoiHop = this.BuoiHopService.layDanhSachBuoiHop();
 //        System.out.println("controllers.LichHopPanelController.<init>()");
-
         initAction();
     }
 
@@ -89,22 +88,17 @@ public class ViewBuoiHopController {
         this.listBuoiHop.forEach(buoihop -> {
             listItem.add(buoihop);
         });
-//        for (int i=0;i<listItem.size();i++){
-//            System.out.println(listItem.get(i).getMaBuoiHop());
-//            System.out.println(listItem.get(i).getChuDe());
-//            System.out.println(listItem.get(i).getThoiGian());
-//            System.out.println(listItem.get(i).getDiaDiem());
-//            System.out.println(listItem.get(i).getSoLuong());
-//            System.out.println(listItem.get(i).getTrangThai());
-//        }
         DefaultTableModel model = classTableModel.setTableCuocHop(listItem, COLUMNS);
+
         JTable table = new JTable(model) {
+
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
             
         };
+
         
         // thiet ke bang
         
@@ -128,8 +122,9 @@ public class ViewBuoiHopController {
 //                    infoJframe.setLocationRelativeTo(null);
 //                    infoJframe.setVisible(true);
                 } else if(e.getClickCount() == 1){
-//                		btn.setEnabled(true);              		
-                		BuoiHop temp = listBuoiHop.get(table.getSelectedRow());
+                		btn.setEnabled(true);
+                        temp = listBuoiHop.get(table.getSelectedRow());
+                        System.out.println(temp.getMaBuoiHop());
                 }
             }
             
@@ -168,9 +163,9 @@ public class ViewBuoiHopController {
     public void setJtfSearch(JTextField jtfSearch) {
         this.jtfSearch = jtfSearch;
     }
+    public BuoiHop getInfo() {
+    	BuoiHop info =diemDanhService.getBuoiHop(temp.getMaBuoiHop());
+    	return info;
+    }
 
-//    public NhanKhauBean getInfo() {
-//    	NhanKhauBean info = nhanKhauService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
-//    	return info;
-//    }
 }
