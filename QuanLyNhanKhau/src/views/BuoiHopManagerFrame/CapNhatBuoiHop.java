@@ -19,7 +19,6 @@ import java.util.List;
 
 /**
  *
- * @author ADMIN
  */
 public class CapNhatBuoiHop extends javax.swing.JFrame {
 

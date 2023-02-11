@@ -3,7 +3,6 @@ package services;
 import java.sql.*;
 /**
  *
- * @author Hai
  */
 public class MysqlConnection {
     public static Connection getMysqlConnection() throws SQLException, ClassNotFoundException {

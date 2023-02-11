@@ -16,7 +16,6 @@ import services.NhanKhauService;
 
 /**
  *
- * @author User
  */
 public class ThemMoiHoKhau extends javax.swing.JFrame {
 

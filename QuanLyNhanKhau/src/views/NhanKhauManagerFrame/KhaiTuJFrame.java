@@ -14,7 +14,6 @@ import services.MysqlConnection;
 
 /**
  *
- * @author Hai
  */
 public class KhaiTuJFrame extends javax.swing.JFrame {
 

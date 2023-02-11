@@ -27,7 +27,6 @@ import views.infoViews.InfoJframe;
 
 /**
  *
- * @author Hai
  */
 public class NhanKhauManagerPanelController {
     private JButton btn;

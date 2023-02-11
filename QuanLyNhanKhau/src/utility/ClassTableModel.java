@@ -13,7 +13,6 @@ import models.*;
 
 /**
  *
- * @author Hai
  * class dinh nghia cac dang table co trong phan mem
  */
 public class ClassTableModel {

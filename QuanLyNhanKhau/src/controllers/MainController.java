@@ -23,7 +23,6 @@ import views.TimKiemPanel;
 
 /**
  *
- * @author Hai
  */
 public class MainController {
     private JFrame jfrMain;

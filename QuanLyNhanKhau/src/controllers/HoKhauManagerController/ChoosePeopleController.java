@@ -22,7 +22,6 @@ import utility.TableModelHoKhau;
 
 /**
  *
- * @author Hai
  */
 public class ChoosePeopleController {
     private NhanKhauBean nhanKhauBean;

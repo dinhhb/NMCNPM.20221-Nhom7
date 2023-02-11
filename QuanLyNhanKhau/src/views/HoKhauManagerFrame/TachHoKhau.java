@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author User
  */
 public class TachHoKhau extends javax.swing.JFrame {
 

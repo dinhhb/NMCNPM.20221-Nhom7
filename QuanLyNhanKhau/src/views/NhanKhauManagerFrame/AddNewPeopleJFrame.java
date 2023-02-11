@@ -18,7 +18,6 @@ import javax.swing.GroupLayout;
 
 /**
  *
- * @author Hai
  */
 public class AddNewPeopleJFrame extends javax.swing.JFrame {
 

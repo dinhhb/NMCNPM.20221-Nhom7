@@ -21,7 +21,6 @@ import java.util.Vector;
 
 /**
  *
- * @author Hai
  * 
  * class dieu khien hoat dong cua TieuSuJFrame
  */

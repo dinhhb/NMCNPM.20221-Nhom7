@@ -32,8 +32,7 @@ import views.infoViews.InfoJframe;
 
 /**
  *
- * @author Hai
- */
+  */
 public class TachHoKhauController {
     private JTextField searchJtf;
     private JPanel tableTopJpn;

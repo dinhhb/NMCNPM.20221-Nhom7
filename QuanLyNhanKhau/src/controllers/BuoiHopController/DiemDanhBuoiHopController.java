@@ -39,7 +39,6 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ADMIN
  */
 public class DiemDanhBuoiHopController  {
 

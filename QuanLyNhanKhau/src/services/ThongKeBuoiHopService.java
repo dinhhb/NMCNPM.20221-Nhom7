@@ -16,7 +16,6 @@ import models.*;
 
 /**
  *
- * @author ADMIN
  */
 public class ThongKeBuoiHopService {
     private static Connection conn;
