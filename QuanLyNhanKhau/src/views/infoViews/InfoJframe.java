@@ -23,7 +23,7 @@ public class InfoJframe extends javax.swing.JFrame {
         this.content = content;
         this.contentJlb.setText(content);
         this.parentJFrame = parentJFrame;
-//        parentJFrame.setEnabled(false);
+//        this.parentJFrame.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {

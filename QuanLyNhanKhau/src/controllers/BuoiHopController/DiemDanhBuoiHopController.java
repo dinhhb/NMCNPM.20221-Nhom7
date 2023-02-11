@@ -56,7 +56,6 @@ public class DiemDanhBuoiHopController  {
     private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private JFrame parentFrame;
     private final String COLUNMS[] = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ","Điểm danh"};
-    private JFrame parentJFrame;
     private JTable table;
 
     public DiemDanhBuoiHopController(ViewBuoiHopController parentController, JFrame parentJFrame, BuoiHop bh) {
@@ -229,15 +228,15 @@ public class DiemDanhBuoiHopController  {
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (e.getClickCount() > 1) {
-////                    temp = list.get(table.getSelectedRow());
-////                    InfoJframe infoJframe = new InfoJframe(temp.toString(), parentJFrame);
-////                    infoJframe.setLocationRelativeTo(null);
-////                    infoJframe.setVisible(true);
-//                } else if(e.getClickCount() == 1) {
-//                    btn.setEnabled(true);
-//                    temp = list.get(table.getSelectedRow());
-//                }
+                if (e.getClickCount() > 1) {
+                    temp = list.get(table.getSelectedRow());
+                    InfoJframe infoJframe = new InfoJframe(temp.toString(), parentFrame);
+                    infoJframe.setLocationRelativeTo(null);
+                    infoJframe.setVisible(true);
+                } else if(e.getClickCount() == 1) {
+                    btn.setEnabled(true);
+                    temp = list.get(table.getSelectedRow());
+                }
             }
 
         }
