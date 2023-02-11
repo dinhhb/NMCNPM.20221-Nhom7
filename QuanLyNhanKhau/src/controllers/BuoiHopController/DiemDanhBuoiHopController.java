@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
@@ -34,6 +35,7 @@ import javax.swing.table.DefaultTableModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
 import views.infoViews.InfoJframe;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,29 +81,35 @@ public class DiemDanhBuoiHopController  {
         this.list = hoKhauService.getListHoKhau();
         themTrangThai();
         setData();
+        initAction1();
         initAction();
+
     }
 
     public void initAction() {
         this.searchJtf.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                String key = searchJtf.getText().trim();
-                if (key.isEmpty()) {
-                    list = hoKhauService.getListHoKhau();
-                } else {
-                    list = hoKhauService.search(key);
-                }
-                themTrangThai();
-                setData();
+                    String key = searchJtf.getText().trim();
+                    if (key.isEmpty()) {
+                        searchJtf1.setEnabled(true);
+                        list = hoKhauService.getListHoKhau();
+                    } else {
+                        searchJtf1.setEnabled(false);
+                        list = hoKhauService.search(key);
+                    }
+                    themTrangThai();
+                    setData();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = searchJtf.getText().trim();
                 if (key.isEmpty()) {
+                    searchJtf1.setEnabled(true);
                     list = hoKhauService.getListHoKhau();
                 } else {
+                    searchJtf1.setEnabled(false);
                     list = hoKhauService.search(key);
                 }
                 themTrangThai();
@@ -110,14 +118,93 @@ public class DiemDanhBuoiHopController  {
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                String key = searchJtf.getText().trim();
+                if (checksearch()) {
+                    String key = searchJtf.getText().trim();
+                    if (key.isEmpty()) {
+                        searchJtf1.setEnabled(true);
+                        list = hoKhauService.getListHoKhau();
+                    } else {
+                        searchJtf1.setEnabled(false);
+                        list = hoKhauService.search(key);
+                    }
+                    themTrangThai();
+                    setData();
+                }
+            }
+        });
+    }
+    public void initAction1() {
+        this.searchJtf1.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                    String key = searchJtf1.getText().trim();
+
+                    if (key.isEmpty()) {
+                        searchJtf.setEnabled(true);
+                        list = hoKhauService.getListHoKhau();
+                    } else {
+                        searchJtf.setEnabled(false);
+                        String key1= null;
+                        try {
+                            key1 = new DiemDanhService().ChuyenCMTthanhMaHoKhau(key);
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        } catch (ClassNotFoundException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        list = hoKhauService.search(key1);
+
+                    }
+                    themTrangThai();
+                    setData();
+
+            }
+
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String key = searchJtf1.getText().trim();
+
                 if (key.isEmpty()) {
+                    searchJtf.setEnabled(true);
                     list = hoKhauService.getListHoKhau();
                 } else {
-                    list = hoKhauService.search(key);
+                    searchJtf.setEnabled(false);
+                    String key1= null;
+                    try {
+                        key1 = new DiemDanhService().ChuyenCMTthanhMaHoKhau(key);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (ClassNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    list = hoKhauService.search(key1);
                 }
                 themTrangThai();
                 setData();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                    String key = searchJtf1.getText().trim();
+
+                    if (key.isEmpty()) {
+                        searchJtf.setEnabled(true);
+                        list = hoKhauService.getListHoKhau();
+                    } else {
+                        searchJtf.setEnabled(false);
+                        String key1= null;
+                        try {
+                            key1 = new DiemDanhService().ChuyenCMTthanhMaHoKhau(key);
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        } catch (ClassNotFoundException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        list = hoKhauService.search(key1);
+                    }
+                    themTrangThai();
+                    setData();
             }
         });
     }
@@ -198,6 +285,17 @@ public class DiemDanhBuoiHopController  {
         this.list = hoKhauService.getListHoKhau();
         themTrangThai();
         setData();
+    }
+    private boolean checksearch(){
+        if(searchJtf.getText().trim().isEmpty()!=true){
+            if(searchJtf1.getText().trim().isEmpty()!=true){
+//                JOptionPane.showMessageDialog(null, "Chỉ được tìm kiếm bằng CCCD hoặc sổ hộ khẩu vui lòng xóa 1 trong hai");
+                System.out.println("Chỉ được tìm kiếm bằng CCCD hoặc sổ hộ khẩu vui lòng xóa 1 trong hais");
+                return false;
+            }
+        }
+        return true;
+
     }
 
     

@@ -1,11 +1,8 @@
 package services;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Connection;
 
 import java.text.SimpleDateFormat;
 import models.BuoiHop;
@@ -29,7 +26,7 @@ public class BuoiHopService {
                     "FROM buoihoptable\n" +
                     "LEFT JOIN diemdanhtable\n" +
                     "ON buoihoptable.id = diemdanhtable.idbuoihop\n" +
-                    "GROUP BY buoihoptable.id;";
+                    "GROUP BY buoihoptable.id"+" ORDER BY buoihoptable.thoigian desc";
 			preStatement = conn.prepareStatement(sql);
 			resultSet = preStatement.executeQuery();
 			
@@ -92,16 +89,45 @@ public class BuoiHopService {
         Connection conn = null;
         PreparedStatement preStatement = null;
         String sql;
+        SimpleDateFormat fmt;
         try{
             conn =MysqlConnection.getMysqlConnection();
-            sql="UPDATE BuoiHoptable SET soluong = ? WHERE id=?";
+            fmt = new SimpleDateFormat("yyyy-MM-dd");
+            sql="UPDATE buoihoptable SET chude = ? , thoigian = ? ,diadiem=? WHERE id=?";
+
             preStatement=conn.prepareStatement(sql);
-            preStatement.setInt(1, BuoiHop.getSoLuong());
-            preStatement.setString(2, BuoiHop.getMaBuoiHop());
+            preStatement.setString(1, BuoiHop.getChuDe());
+            preStatement.setDate(2, new java.sql.Date(BuoiHop.getThoiGian().getTime()));
+            preStatement.setString(3, BuoiHop.getDiaDiem());
+            preStatement.setString(4, BuoiHop.getMaBuoiHop());
             preStatement.executeUpdate();
         }catch (Exception ex) {
               ex.printStackTrace();
         }   
+    }
+    public void deleteBuoiHop (BuoiHop BuoiHop){
+        Connection conn = null;
+        PreparedStatement preStatement = null;
+        String sql;
+        String sql1;
+        SimpleDateFormat fmt;
+        try{
+            conn =MysqlConnection.getMysqlConnection();
+            fmt = new SimpleDateFormat("yyyy-MM-dd");
+            sql="DELETE FROM buoihoptable WHERE id=?";
+            System.out.println(sql);
+            preStatement=conn.prepareStatement(sql);
+            preStatement.setString(1, BuoiHop.getMaBuoiHop());
+            preStatement.executeUpdate();
+            sql1="DELETE FROM diemdanhtable WHERE idbuoihop=?";
+            System.out.println(sql1);
+            preStatement=conn.prepareStatement(sql1);
+            preStatement.setString(1, BuoiHop.getMaBuoiHop());
+            preStatement.executeUpdate();
+        }catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     public List<BuoiHop> search(String keyword) {
@@ -117,10 +143,10 @@ public class BuoiHopService {
                     "FROM buoihoptable\n" +
                     "LEFT JOIN diemdanhtable\n" +
                     "ON buoihoptable.id = diemdanhtable.idbuoihop\n"
-                    +"WHERE chude LIKE '%"
+                    +"WHERE buoihoptable.chude LIKE '%"
                     + keyword
-                    + "%'"
-                    +"GROUP BY buoihoptable.id;";
+                    + "%' OR buoihoptable.id LIKE '%" +keyword+ "%'"+"OR buoihoptable.diadiem LIKE '%" +keyword+ "%'"
+                    +"GROUP BY buoihoptable.id";
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -153,6 +179,7 @@ public class BuoiHopService {
         }
         return list;
     }
+
 
     private void exceptionHandle(String message) {
         JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);

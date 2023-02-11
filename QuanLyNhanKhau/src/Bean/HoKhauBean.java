@@ -20,14 +20,32 @@ public class HoKhauBean {
     private List<ThanhVienCuaHoModel> listThanhVienCuaHo;
     private List<LichSuThayDoiNhanKhauModel> listLSuNhanKhau;
     private Boolean trangThai;
+    private int tongSoBuoiHop;
 
-    public HoKhauBean(HoKhauModel hoKhauModel, NhanKhauModel chuHo, List<NhanKhauModel> listNhanKhauModels, 
-    		List<ThanhVienCuaHoModel> listThanhVienCuaHo, List<LichSuThayDoiNhanKhauModel> listLichSu) {
+    public void setTongSoBuoiHop(int tongSoBuoiHop) {
+        this.tongSoBuoiHop = tongSoBuoiHop;
+    }
+
+    public int getTongSoBuoiHop() {
+        return tongSoBuoiHop;
+    }
+
+    public HoKhauBean(HoKhauModel hoKhauModel, NhanKhauModel chuHo, List<NhanKhauModel> listNhanKhauModels,
+                      List<ThanhVienCuaHoModel> listThanhVienCuaHo, List<LichSuThayDoiNhanKhauModel> listLichSu) {
         this.hoKhauModel = hoKhauModel;
         this.chuHo = chuHo;
         this.listNhanKhauModels = listNhanKhauModels;
         this.listThanhVienCuaHo = listThanhVienCuaHo;
         this.listLSuNhanKhau = listLichSu;
+    }
+    public void setHoKhauBean(HoKhauModel hoKhauModel, NhanKhauModel chuHo, List<NhanKhauModel> listNhanKhauModels,
+                      List<ThanhVienCuaHoModel> listThanhVienCuaHo, List<LichSuThayDoiNhanKhauModel> listLichSu, int tongSoBuoiHop) {
+        this.hoKhauModel = hoKhauModel;
+        this.chuHo = chuHo;
+        this.listNhanKhauModels = listNhanKhauModels;
+        this.listThanhVienCuaHo = listThanhVienCuaHo;
+        this.listLSuNhanKhau = listLichSu;
+        this.tongSoBuoiHop=tongSoBuoiHop;
     }
     
     public HoKhauBean() {

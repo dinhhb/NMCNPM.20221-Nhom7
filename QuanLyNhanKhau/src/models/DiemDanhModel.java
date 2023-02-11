@@ -6,9 +6,9 @@ public class DiemDanhModel {
      * To change this template file, choose Tools | Templates
      * and open the template in the editor.
      */
-        String soHoKhau;
-        String maBuoiHop;
-        String trangThai;
+        private String soHoKhau;
+        private String maBuoiHop;
+        private String trangThai;
 
         public DiemDanhModel(String soHoKhau, String maBuoiHop, String trangThai) {
             this.soHoKhau = soHoKhau;

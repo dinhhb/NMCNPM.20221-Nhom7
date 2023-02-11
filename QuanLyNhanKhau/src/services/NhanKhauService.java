@@ -14,7 +14,6 @@ import models.TieuSuModel;
 
 /**
  *
- * @author Hai
  */
 public class NhanKhauService {
     
@@ -110,7 +109,7 @@ public class NhanKhauService {
         List<NhanKhauBean> list = new ArrayList<>();
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            String query = "SELECT * FROM nhan_khau INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC LIMIT 0, 10";
+            String query = "SELECT * FROM nhan_khau INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao desc";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -318,7 +317,6 @@ public class NhanKhauService {
     
     /*
      * Hàm tìm kiếm nhân khẩu theo tiêu chí
-     * Nguyễn Trọng Bằng
      */
     
     public List<NhanKhauBean> searchNhanKhau(String tc1, String tc2, String tc3,
@@ -454,7 +452,7 @@ public class NhanKhauService {
     /*
      * hàm getCMT 
      * 
-     * Nguyễn Quốc Hào
+
      * 
      * */
     /* 

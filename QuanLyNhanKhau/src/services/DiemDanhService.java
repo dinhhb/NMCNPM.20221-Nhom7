@@ -93,4 +93,33 @@ public class DiemDanhService {
         connection.close();
         return true;
     }
+    public String ChuyenCMTthanhMaHoKhau(String soCMT) throws SQLException, ClassNotFoundException {
+
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query = "SELECT ho_khau.maHoKhau\n" +
+                    "FROM chung_minh_thu\n" +
+                    "JOIN nhan_khau ON chung_minh_thu.idNhanKhau = nhan_khau.ID\n" +
+                    "JOIN thanh_vien_cua_ho ON nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau\n" +
+                    "JOIN ho_khau ON thanh_vien_cua_ho.idHoKhau = ho_khau.ID\n" +
+                    "WHERE chung_minh_thu.soCMT = '" + soCMT + "'\n" +
+                    "UNION\n" +
+                    "SELECT ho_khau.maHoKhau\n" +
+                    "FROM ho_khau\n" +
+                    "JOIN nhan_khau ON ho_khau.idChuHo = nhan_khau.ID\n" +
+                    "JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau\n" +
+                    "WHERE chung_minh_thu.soCMT = '" + soCMT + "'";
+            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+            connection.close();
+        } catch (Exception e) {
+
+        }
+        return "";
+    }
+
+
 }

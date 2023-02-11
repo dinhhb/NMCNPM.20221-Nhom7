@@ -1,6 +1,5 @@
 package utility;
 
-import Bean.ChauNhoBean;
 import Bean.HoKhauBean;
 //import Bean.HocSinhBean;
 
@@ -44,33 +43,33 @@ public class ClassTableModel {
         });
         return dtm;
     }
-    public DefaultTableModel setTableChauNho(List<ChauNhoBean> listChauNhoBean, String[] listColumn) {
-        final int columns = listColumn.length;
-        DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
-            }
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 7 ? Boolean.class : String.class;
-            }
-        };
-        dtm.setColumnIdentifiers(listColumn);
-        Object[] obj;
-        obj = new Object[columns];
-        listChauNhoBean.forEach((ChauNhoBean item) -> {
-            obj[0] = item.getNhanKhauModel().getID();
-            obj[1] = item.getNhanKhauModel().getHoTen();
-            obj[2] = item.getNhanKhauModel().getNamSinh();
-            obj[3] = item.getNhanKhauModel().getGioiTinh();
-            obj[4] = item.getHoKhauModel().getMaHoKhau();
-            obj[5] = item.getThanhVienCuaHoModel().getQuanHeVoiChuHo();
-            obj[6] = item.getNhanKhauModel().getDiaChiHienNay();
-            dtm.addRow(obj);
-        });
-        return dtm;
-    }
+//    public DefaultTableModel setTableChauNho(List<ChauNhoBean> listChauNhoBean, String[] listColumn) {
+//        final int columns = listColumn.length;
+//        DefaultTableModel dtm = new DefaultTableModel()  {
+//            @Override
+//            public boolean isCellEditable(int row, int column) {
+//                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+//            }
+//            @Override
+//            public Class<?> getColumnClass(int columnIndex) {
+//                return columnIndex == 7 ? Boolean.class : String.class;
+//            }
+//        };
+//        dtm.setColumnIdentifiers(listColumn);
+//        Object[] obj;
+//        obj = new Object[columns];
+//        listChauNhoBean.forEach((ChauNhoBean item) -> {
+//            obj[0] = item.getNhanKhauModel().getID();
+//            obj[1] = item.getNhanKhauModel().getHoTen();
+//            obj[2] = item.getNhanKhauModel().getNamSinh();
+//            obj[3] = item.getNhanKhauModel().getGioiTinh();
+//            obj[4] = item.getHoKhauModel().getMaHoKhau();
+//            obj[5] = item.getThanhVienCuaHoModel().getQuanHeVoiChuHo();
+//            obj[6] = item.getNhanKhauModel().getDiaChiHienNay();
+//            dtm.addRow(obj);
+//        });
+//        return dtm;
+//    }
     // bang cho danh sach hoc sinh
 //    public DefaultTableModel setTableHocSinh(List<HocSinhBean> listItem, String[] listColumn) {
 //        final int columns = listColumn.length;
@@ -306,6 +305,31 @@ public class ClassTableModel {
 //            java.sql.Date now = new java.sql.Date(quanlynhankhau.QuanLyNhanKhau.calendar.getTime().getTime());
 //            if(item.getThoiGianHop().compareTo(now) >= 0) obj[4] = "Chưa diễn ra";
 //            else obj[4]= "Đã diễn ra";
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
+    public static DefaultTableModel setThongKeBH(List<HoKhauBean> listItem, String[] listColumn) {
+        final int columns = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel()  {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+
+                return columnIndex == 4 ? Boolean.class : String.class;
+            }
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj;
+        obj = new Object[columns];
+        listItem.forEach((HoKhauBean item) -> {
+            obj[0] = item.getHoKhauModel().getMaHoKhau();
+            obj[1] = item.getChuHo().getHoTen();
+            obj[2] = item.getHoKhauModel().getDiaChi();
+            obj[3] = item.getTongSoBuoiHop();
             dtm.addRow(obj);
         });
         return dtm;

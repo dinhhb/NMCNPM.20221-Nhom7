@@ -32,19 +32,21 @@ import utility.ClassTableModel;
  */
 public class ViewBuoiHopController {
      private JButton btn;
+    private JButton btn1;
     private JPanel jpnView;
     private JTextField jtfSearch;
     private BuoiHopService BuoiHopService;
     private DiemDanhService diemDanhService;
     private List<BuoiHop> listBuoiHop;
     private ClassTableModel classTableModel = null;
-    private final String[] COLUMNS = {"Mã buổi họp", "Chủ đề", "Thời gian", "Địa điểm", "Số lượng", "Trạng thái"};
+    private final String[] COLUMNS = {"Mã buổi họp", "Chủ đề", "Thời gian", "Địa điểm", "Số hộ tham gia", "Trạng thái"};
     private JFrame parentJFrame;
     private BuoiHop temp;
-    public ViewBuoiHopController(JPanel jpnView, JTextField jtfSearch,JButton btn) {
+    public ViewBuoiHopController(JPanel jpnView, JTextField jtfSearch,JButton btn,JButton btn1) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
         this.btn = btn;
+        this.btn1=btn1;
         classTableModel = new ClassTableModel();
         this.BuoiHopService = new BuoiHopService();
         this.diemDanhService =new DiemDanhService();
@@ -52,11 +54,10 @@ public class ViewBuoiHopController {
 //        System.out.println("controllers.LichHopPanelController.<init>()");
         initAction();
     }
-
 //    public NhanKhauManagerPanelController() {
 //    }
-    
-    
+
+
     //
     public void initAction(){
         this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
@@ -82,7 +83,7 @@ public class ViewBuoiHopController {
             }
         });
     }
-    
+
     public void setDataTable() {
         List<BuoiHop> listItem = new ArrayList<>();
         this.listBuoiHop.forEach(buoihop -> {
@@ -96,12 +97,12 @@ public class ViewBuoiHopController {
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
-            
+
         };
 
-        
+
         // thiet ke bang
-        
+
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table.getTableHeader().setPreferredSize(new Dimension(100, 50));
         table.setRowHeight(50);
@@ -116,20 +117,19 @@ public class ViewBuoiHopController {
             public void mouseClicked(MouseEvent e) {
 //                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
                 if (e.getClickCount() > 1) {
-//                    temp = listNhanKhauBeans.get(table.getSelectedRow());
-//                    NhanKhauBean info = nhanKhauService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
-//                    InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
-//                    infoJframe.setLocationRelativeTo(null);
-//                    infoJframe.setVisible(true);
+//
                 } else if(e.getClickCount() == 1){
-                		btn.setEnabled(true);
+
+                        btn1.setEnabled(true);
                         temp = listBuoiHop.get(table.getSelectedRow());
-                        System.out.println(temp.getMaBuoiHop());
+                        if(temp.getTrangThai()=="Đang diễn ra"){
+                            btn.setEnabled(true);
+                        }else {btn.setEnabled(false);}
                 }
             }
-            
+
         });
-        
+
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.setPreferredSize(new Dimension(800, 400));
@@ -143,7 +143,7 @@ public class ViewBuoiHopController {
     public void setParentJFrame(JFrame parentJFrame) {
         this.parentJFrame = parentJFrame;
     }
-    
+
     public void refreshData() {
         this.listBuoiHop = this.BuoiHopService.layDanhSachBuoiHop();
         setDataTable();

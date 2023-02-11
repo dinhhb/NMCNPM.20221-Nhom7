@@ -1,8 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package views.BuoiHopManagerFrame;
+
+import controllers.BuoiHopController.AddNewController;
+import controllers.BuoiHopController.ThemBuoiHopController;
+import controllers.BuoiHopController.ViewBuoiHopController;
+//import controllers.BuoiHopPanelController;
+import controllers.LoginController;
+import models.BuoiHop;
+import models.ChungMinhThuModel;
+import models.NhanKhauModel;
+
+import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -13,6 +22,72 @@ public class ThemBuoiHop extends javax.swing.JFrame {
     /**
      * Creates new form ThemBuoiHop
      */
+
+    private ViewBuoiHopController parentController;
+    private BuoiHop buoiHop;
+    private JFrame parentFrame;
+    private controllers.BuoiHopController.AddNewController controller;
+
+    //    public ThemBuoiHop(){
+//        initComponents();
+//    }
+    public ThemBuoiHop(ViewBuoiHopController parentController, JFrame parentJFrame) {
+        this.parentController = parentController;
+        this.parentFrame = parentJFrame;
+        this.parentFrame.setEnabled(false);
+        this.buoiHop = new BuoiHop();
+        initComponents();
+        setTitle("Thêm buổi họp mới");
+        controller = new AddNewController();
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+                    close();
+                }
+            }
+
+        });
+
+    }
+
+    public ThemBuoiHop(JFrame parentJFrame) {
+//        this.parentController = new ViewBuoiHopController(){
+//            @Override
+//            public void refreshData() {
+//                // do nothing
+//            }
+//            @Override
+//            public void initAction() {
+//                // do nothing
+//            }
+//        };
+        this.parentFrame = parentJFrame;
+        this.parentFrame.setEnabled(false);
+        this.buoiHop = new BuoiHop();
+        initComponents();
+        setTitle("Tạo lịch họp mới");
+        controller = new AddNewController();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+                    close();
+                }
+            }
+
+        });
+    }
+    void close() {
+        this.parentFrame.setEnabled(true);
+        dispose();
+
+    }
+
+
     public ThemBuoiHop() {
         initComponents();
     }
@@ -30,49 +105,62 @@ public class ThemBuoiHop extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        ThoiGian = new com.toedter.calendar.JDateChooser();
-        ChuDe = new javax.swing.JTextField();
-        DiaDiem = new javax.swing.JTextField();
+        themBtn = new javax.swing.JButton();
+        thoiGian = new com.toedter.calendar.JDateChooser();
+        chuDe = new javax.swing.JTextField();
+        diaDiem = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        ChuDe1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        maBuoiHop = new javax.swing.JTextField();
+        thoatBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel1.setText("Thêm buổi họp ");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Chủ đề");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Thời gian");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Địa Điểm");
 
-        jButton1.setText("Thêm");
-
-        ChuDe.addActionListener(new java.awt.event.ActionListener() {
+        themBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        themBtn.setText("Thêm");
+        themBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChuDeActionPerformed(evt);
+                themBtnActionPerformed(evt);
             }
         });
 
+        thoiGian.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        chuDe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chuDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chuDeActionPerformed(evt);
+            }
+        });
+
+        diaDiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Mã buổi họp");
 
-        ChuDe1.addActionListener(new java.awt.event.ActionListener() {
+        maBuoiHop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        maBuoiHop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChuDe1ActionPerformed(evt);
+                maBuoiHopActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Thoát");
-        jButton2.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-                jButton2AncestorRemoved(evt);
+        thoatBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        thoatBtn.setText("Thoát");
+        thoatBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thoatBtnActionPerformed(evt);
             }
         });
 
@@ -81,11 +169,11 @@ public class ThemBuoiHop extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jButton2)
+                .addGap(84, 84, 84)
+                .addComponent(thoatBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(115, 115, 115))
+                .addComponent(themBtn)
+                .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,63 +181,118 @@ public class ThemBuoiHop extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)))
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(ThoiGian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ChuDe)
-                                .addComponent(DiaDiem, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(ChuDe1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 161, Short.MAX_VALUE))
+                                .addComponent(jLabel5)
+                                .addGap(35, 35, 35))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(67, 67, 67)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(maBuoiHop)
+                            .addComponent(chuDe)
+                            .addComponent(thoiGian, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(diaDiem))))
+                .addGap(0, 145, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(215, 215, 215))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(ChuDe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addComponent(maBuoiHop, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(chuDe, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(thoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel4)
+                        .addContainerGap(97, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(diaDiem)
+                        .addGap(91, 91, 91))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(ChuDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(ThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(DiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(62, 62, 62))
+                    .addComponent(themBtn)
+                    .addComponent(thoatBtn))
+                .addGap(42, 42, 42))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ChuDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChuDeActionPerformed
+    private void maBuoiHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChuDeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ChuDeActionPerformed
 
-    private void ChuDe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChuDe1ActionPerformed
+    private void chuDeActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
+    }                                      
+
+    private void diaDiemActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+    }                                      
+
+    private void themBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChuDe1ActionPerformed
+        // TODO add your handling code here:
+        if (validateValueInForm()) {
+            // tao moi 1 doi tuong nhan khau
+//            NhanKhauModel temp = this.nhanKhauBean.getNhanKhauModel();
+//            ChungMinhThuModel cmt = this.nhanKhauBean.getChungMinhThuModel();
+            BuoiHop temp = this.buoiHop;
+            temp.setMaBuoiHop(maBuoiHop.getText());
+            temp.setThoiGian(thoiGian.getDate());
+            temp.setDiaDiem(diaDiem.getText());
+            temp.setChuDe(chuDe.getText());
+            try {
+                if (this.controller.themBuoiHop(this.buoiHop)) {
+                    JOptionPane.showMessageDialog(null, "Thêm thành công!!");
+                    close();
+                    parentController.refreshData();
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_ChuDe1ActionPerformed
 
-    private void jButton2AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jButton2AncestorRemoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2AncestorRemoved
+    private void thoatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Are you sure to close this?","Confirm",JOptionPane.YES_NO_OPTION) == 0) {
+            close();
+        }
+    }//GEN-LAST:event_CancelBtnActionPerformed
+
+    private boolean validateValueInForm() {
+        // check null
+        if (maBuoiHop.getText().trim().isEmpty()
+                || chuDe.getText().trim().isEmpty()
+                || chuDe.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập hết các trường", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
 
     /**
      * @param args the command line arguments
@@ -158,7 +301,7 @@ public class ThemBuoiHop extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -187,16 +330,16 @@ public class ThemBuoiHop extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ChuDe;
-    private javax.swing.JTextField ChuDe1;
-    private javax.swing.JTextField DiaDiem;
-    private com.toedter.calendar.JDateChooser ThoiGian;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField chuDe;
+    private javax.swing.JTextField diaDiem;
+    private javax.swing.JButton themBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField maBuoiHop;
+    private javax.swing.JButton thoatBtn;
+    private com.toedter.calendar.JDateChooser thoiGian;
     // End of variables declaration//GEN-END:variables
 }

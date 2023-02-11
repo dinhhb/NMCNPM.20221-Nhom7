@@ -294,6 +294,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
     	if (!jLabel8.isEnabled() || !jLabel3.isEnabled()) {
     		JOptionPane.showMessageDialog(this, "Số CMT chưa chính xác!", "Error",
     		        JOptionPane.ERROR_MESSAGE);
+
     		return;
     	}
     	KhaiTuModel model = new KhaiTuModel();
