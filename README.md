@@ -14,7 +14,7 @@ Nhóm 7 - CNTT Việt Pháp - Nhập môn Công nghệ phần mềm - ĐH Bách 
 [Đề tài](https://docs.google.com/document/d/1l4P31ZByuccmjFdiW1dLIc14_SrPfdaS1rZnk8fUxiE/edit?usp=sharing)
 
 ## Yêu cầu
-Cài đặt IDE IntelliJ, xampp
+Cài đặt IDE IntelliJ, xampp, mysql
 
 ## Hướng dẫn
 1. Clone project về, mở IntelliJ, chọn File > New > Project from Existing sources > Import project from external model > Maven
