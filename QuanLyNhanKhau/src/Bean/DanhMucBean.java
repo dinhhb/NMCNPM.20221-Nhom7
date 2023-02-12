@@ -7,10 +7,6 @@ package Bean;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Hai
- */
 public class DanhMucBean {
     private String kind;
     private JPanel jpn;

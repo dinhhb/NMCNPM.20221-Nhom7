@@ -3,8 +3,6 @@ package views;
 import controllers.HomeCotroller;
 
 /**
- *
- * @author Ai lÃ m thÃ¬ Ä‘iá»�n tÃªn vÃ o
  */
 public class HomePagePanel extends javax.swing.JPanel {
 

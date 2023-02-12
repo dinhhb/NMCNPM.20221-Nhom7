@@ -10,7 +10,6 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Hai
  */
 public class LoginUI extends javax.swing.JFrame {
     
@@ -118,7 +117,7 @@ public class LoginUI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("@Adventure is the best way to learn");
+        jLabel4.setText("Nhóm 7 - CNTT Việt Pháp");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/login.png"))); // NOI18N
 

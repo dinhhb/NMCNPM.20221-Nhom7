@@ -24,7 +24,6 @@ import views.infoViews.InfoJframe;
 
 /**
  *
- * @author Hai
  */
 public class HoKhauPanelController {
 	private JButton btn;

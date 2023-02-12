@@ -20,7 +20,6 @@ import models.ThanhVienCuaHoModel;
 
 /**
  *
- * @author Hai
  */
 public class HoKhauService {
     // them moi ho khau

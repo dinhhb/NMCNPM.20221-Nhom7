@@ -16,7 +16,6 @@ import services.NhanKhauService;
 
 /**
  *
- * @author Hào Nguyễn Quốc
  */
 public class ChangeHoKhau extends javax.swing.JFrame {
 

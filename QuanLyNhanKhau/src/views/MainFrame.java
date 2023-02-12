@@ -31,7 +31,6 @@ import javax.swing.JMenuItem;
 
 /**
  *
- * @author Hai
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -218,7 +217,7 @@ public class MainFrame extends javax.swing.JFrame {
         BuoiHopBtn.setBackground(new Color(102, 102, 102));
         
         lblBuoiHop = new JLabel();
-        lblBuoiHop.setIcon(new ImageIcon(MainFrame.class.getResource("/Icons/BuoiHop.png")));
+        lblBuoiHop.setIcon(new ImageIcon(MainFrame.class.getResource("/Icons/buoihop3.png")));
         lblBuoiHop.setText("Buổi Họp");
         lblBuoiHop.setForeground(Color.WHITE);
         lblBuoiHop.setFont(new Font("Arial", Font.BOLD, 14));

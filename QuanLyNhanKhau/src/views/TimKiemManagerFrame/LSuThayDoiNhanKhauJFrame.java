@@ -15,7 +15,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
  *
- * @author User
  */
 public class LSuThayDoiNhanKhauJFrame extends javax.swing.JFrame {
 

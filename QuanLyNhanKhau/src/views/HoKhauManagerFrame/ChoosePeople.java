@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hai
  */
 public class ChoosePeople extends javax.swing.JFrame {
 

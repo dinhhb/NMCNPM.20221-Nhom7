@@ -10,7 +10,6 @@ import services.MysqlConnection;
 
 /**
  *
- * @author Hai
  */
 public class KhaiTuController {
     public int checkCMT(String cmt) {
@@ -44,6 +43,12 @@ public class KhaiTuController {
             preparedStatement.setString(6, khaiTuModel.getLyDoChet());
             preparedStatement.execute();
             preparedStatement.close();
+
+            String sql1 = "DELETE FROM nhan_khau WHERE `nhan_khau`.`ID` ='"+ khaiTuModel.getIdNguoiChet() +"'";
+            PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
+            preparedStatement1.execute();
+            preparedStatement.close();
+
             connection.close();
             JOptionPane.showMessageDialog(null, "Khai tử thành công!", "Success", JOptionPane.PLAIN_MESSAGE);
             return true;

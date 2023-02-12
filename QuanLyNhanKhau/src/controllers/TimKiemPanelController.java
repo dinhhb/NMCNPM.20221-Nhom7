@@ -32,7 +32,6 @@ import java.awt.event.ActionEvent;
 
 /**
  *
- * @author Hai
  */
 public class TimKiemPanelController {
     private List<HoKhauBean> list;

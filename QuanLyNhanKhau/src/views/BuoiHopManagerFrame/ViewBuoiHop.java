@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import models.BuoiHop;
+import models.ThongKeBH;
 import services.BuoiHopService;
 import views.NhanKhauManagerFrame.PeopleChangeJFrame;
 
@@ -40,7 +41,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     public ViewBuoiHop(JFrame parentFrame) {
         this.parentJFrame = parentFrame;
         initComponents();
-        controller = new ViewBuoiHopController(tablePanel1, jtfSearch,DiemDanh);
+        controller = new ViewBuoiHopController(tablePanel1, jtfSearch,DiemDanh,CapNhat);
         controller.setParentJFrame(parentJFrame);
         controller.setDataTable();
     }
@@ -63,6 +64,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         CapNhat = new javax.swing.JButton();
         jtfSearch = new javax.swing.JTextField();
         tablePanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -93,18 +95,24 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         DiemDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         DiemDanh.setText("Điểm danh");
         DiemDanh.setEnabled(false);
-        DiemDanh.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                DiemDanhActionPerformed(e);
+        DiemDanh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiemDanhActionPerformed(evt);
             }
         });
 
         CapNhat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CapNhat.setText("Cập nhật");
+        CapNhat.setEnabled(false);
+        CapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CapNhatActionPerformed(evt);
+            }
+        });
 
         jtfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TimKiemBuoiHopActionPerformed(evt);
+                jtfSearchActionPerformed(evt);
             }
         });
 
@@ -121,6 +129,14 @@ public class ViewBuoiHop extends javax.swing.JPanel {
             .addGap(0, 345, Short.MAX_VALUE)
         );
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Thống kê");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ThongKeHopActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,13 +151,15 @@ public class ViewBuoiHop extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(ThemBuoiHop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ThemBuoiHop, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(DiemDanh)
                         .addGap(18, 18, 18)
                         .addComponent(CapNhat)
-                        .addGap(10, 10, 10))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,15 +169,20 @@ public class ViewBuoiHop extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ThemBuoiHop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DiemDanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DiemDanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ThemBuoiHop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(tablePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+
+
+
 //    int i=1;
 //    private void ShowBuoiHop() {                                        
 //        // TODO add your handling code here:
@@ -176,7 +199,7 @@ public class ViewBuoiHop extends javax.swing.JPanel {
 //    }  
 
 
-    private void DiemDanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBuoiHopActionPerformed
+    private void DiemDanhActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         BuoiHop info = controller.getInfo();
         DiemDanhBuoiHop diemDanhBuoiHop= new DiemDanhBuoiHop(this.controller,this.parentJFrame,info);
@@ -184,16 +207,38 @@ public class ViewBuoiHop extends javax.swing.JPanel {
         diemDanhBuoiHop.setResizable(false);
         diemDanhBuoiHop.setVisible(true);
 
-    }//GEN-LAST:event_ThemBuoiHopActionPerformed
+    }                                           
     private void ThemBuoiHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBuoiHopActionPerformed
         // TODO add your handling code here:
+        ThemBuoiHop themBuoiHop1 = new ThemBuoiHop(this.controller, this.parentJFrame);
+        themBuoiHop1.setLocationRelativeTo(null);
+        themBuoiHop1.setResizable(false);
+        themBuoiHop1.setVisible(true);
 
 
     }//GEN-LAST:event_ThemBuoiHopActionPerformed
-
-    private void TimKiemBuoiHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemBuoiHopActionPerformed
+    private void ThongKeHopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBuoiHopActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TimKiemBuoiHopActionPerformed
+        ThongKeBuoiHop thongKeBuoiHop = new ThongKeBuoiHop(this.controller, this.parentJFrame);
+        thongKeBuoiHop.setLocationRelativeTo(null);
+        thongKeBuoiHop.setResizable(false);
+        thongKeBuoiHop.setVisible(true);
+
+
+    }//GEN-LAST:event_ThemBuoiHopActionPerformed
+    private void CapNhatActionPerformed(java.awt.event.ActionEvent evt) {
+
+        BuoiHop info = controller.getInfo();
+        CapNhatBuoiHop capNhatBuoiHop= new CapNhatBuoiHop(this.controller,this.parentJFrame,info);
+        capNhatBuoiHop.setLocationRelativeTo(null);
+        capNhatBuoiHop.setResizable(false);
+        capNhatBuoiHop.setVisible(true);
+
+    }
+
+    private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,10 +281,11 @@ public class ViewBuoiHop extends javax.swing.JPanel {
     private javax.swing.JButton CapNhat;
     private javax.swing.JButton DiemDanh;
     private javax.swing.JButton ThemBuoiHop;
-    private javax.swing.JTextField jtfSearch;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JTextField jtfSearch;
     private javax.swing.JPanel tablePanel;
     private javax.swing.JPanel tablePanel1;
     // End of variables declaration//GEN-END:variables

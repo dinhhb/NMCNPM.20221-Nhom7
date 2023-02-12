@@ -109,6 +109,7 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
 
         tenCuocHop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        jtfSearch2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtfSearch2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfSearch2ActionPerformed(evt);
@@ -126,12 +127,11 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
                 } catch (ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
-                JOptionPane.showMessageDialog(null, "Thêm thành công!!");
+                JOptionPane.showMessageDialog(null, "Điểm danh thành công!!");
                 close();
                 parentController.refreshData();
             }
         });
-
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton3.setText("Thoát");
@@ -153,14 +153,17 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
             .addGap(0, 334, Short.MAX_VALUE)
         );
 
+        jtfSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfSearchActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Tìm theo CCCD");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Tìm theo hộ khẩu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,13 +195,16 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tenCuocHop, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jtfSearch, tenCuocHop});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -224,6 +230,8 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
                     .addComponent(DiemDanhbt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jtfSearch, tenCuocHop});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,9 +281,9 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
 
     List<DiemDanhModel> listChose =   controller.getDiemDanh();
     for (int i=0;i<listChose.size();i++){
-        System.out.println(listChose.get(i).getMaBuoiHop());
-        System.out.println(listChose.get(i).getSoHoKhau());
-        System.out.println(listChose.get(i).getTrangThai());
+//        System.out.println(listChose.get(i).getMaBuoiHop());
+//        System.out.println(listChose.get(i).getSoHoKhau());
+//        System.out.println(listChose.get(i).getTrangThai());
 
 
         if( listChose.get(i).getTrangThai().equals("true")){
@@ -292,9 +300,9 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
             }
             if (checkxemchuacothiadd){
 
-                System.out.println(listChose.get(i).getSoHoKhau()+"Ho khau co roi nen khong can lam gi ca ");
+//                System.out.println(listChose.get(i).getSoHoKhau()+"Ho khau co roi nen khong can lam gi ca ");
             }else {
-                System.out.println(listChose.get(i).getSoHoKhau()+"Chua co t nen add vao database");
+//                System.out.println(listChose.get(i).getSoHoKhau()+"Chua co t nen add vao database");
                 new DiemDanhService().addDiemDanh(listChose.get(i).getSoHoKhau(),listChose.get(i).getMaBuoiHop());
             }
 
@@ -313,7 +321,7 @@ public class DiemDanhBuoiHop extends javax.swing.JFrame {
                 if (checkxemdacoroithixoa){
                     new DiemDanhService().deleteDiemDanh(listChose.get(i).getSoHoKhau(),listChose.get(i).getMaBuoiHop());
                 }else {
-                    System.out.println(listChose.get(i).getSoHoKhau()+"Ho khau chua co nen khong can lam gi ca ");
+//                    System.out.println(listChose.get(i).getSoHoKhau()+"Ho khau chua co nen khong can lam gi ca ");
                 }
         }
     }
